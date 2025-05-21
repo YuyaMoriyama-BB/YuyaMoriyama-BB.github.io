@@ -6,6 +6,6 @@
 .. toctree::
    :maxdepth: 2
    
-   ./standard/simple_webserver
-   ./standard/webserver
-   ./standard/spg
+   simple_webserver
+   webserver
+   spg

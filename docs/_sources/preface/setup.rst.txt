@@ -38,11 +38,5 @@ WCIポータルにアクセスする
 3. WCIポータルにアクセスする
 --------------------------------
 
-**端末** のブラウザより `WCI Portal <https://portal.bbwci.net>`_ (`https://portal.bbwci.net`)へアクセスします。
-ユーザID,パスワードについては別途ご確認ください。
-
-
-
-
-
-
+| **端末** のブラウザより `WCI Portal <https://portal.bbwci.net>`_ (`https://portal.bbwci.net`)へアクセスします。
+| ログイン方法やポータルの操作については、別紙 WCI Portal 利用手順書 をご確認ください。

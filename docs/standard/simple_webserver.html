@@ -9,7 +9,7 @@
   <title>Webサーバを公開する &mdash; WCI設定事例集  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1a210187" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=d4bf43ca" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -22,7 +22,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Webサーバを公開する(NAT,NAPT)" href="webserver.html" />
-    <link rel="prev" title="基本設定" href="../standard.html" /> 
+    <link rel="prev" title="基本設定" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,8 +46,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preface.html">はじめに</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../standard.html">基本設定</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface/index.html">はじめに</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">基本設定</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Webサーバを公開する</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">接続構成</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wci">WCIポータルの設定</a><ul>
@@ -62,7 +62,7 @@
 <li class="toctree-l2"><a class="reference internal" href="spg.html">SPGと連携する</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ipv6.html">IPv6を使用する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipv6/index.html">IPv6</a></li>
 </ul>
 
         </div>
@@ -79,10 +79,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../standard.html">基本設定</a></li>
+          <li class="breadcrumb-item"><a href="index.html">基本設定</a></li>
       <li class="breadcrumb-item active">Webサーバを公開する</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/standard/simple_webserver.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -92,8 +91,10 @@
              
   <section id="web">
 <h1>Webサーバを公開する<a class="headerlink" href="#web" title="Link to this heading"></a></h1>
-<p>本事例は、拠点ネットワークにWCIアドレスを直接的に割り当てる最もシンプルな構成です。
-拠点ネットワーク内に、Webサーバ(443/tcp)を設置しWCIネットワーク(IPv4)に公開します。</p>
+<div class="line-block">
+<div class="line">本事例は、拠点ネットワークにWCIアドレスを直接的に割り当てる最もシンプルな構成です。</div>
+<div class="line">拠点ネットワーク内に、Webサーバ(443/tcp)を設置しWCIネットワーク(IPv4)に公開します。</div>
+</div>
 <section id="id1">
 <h2>接続構成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p><strong>接続構成図</strong></p>
@@ -101,16 +102,10 @@
 </a>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
-<ul>
-<li><p>※1,2 導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</p></li>
-<li><div class="line-block">
-<div class="line">※3 ご契約拠点により、WCIアドレスおよびサブネットの割当範囲が異なります。別途ご確認下さい。</div>
 <div class="line-block">
-<div class="line">本資料ではWCIアドレス割当範囲を <code class="docutils literal notranslate"><span class="pre">100.65.21.0/26</span></code>、WCIルータのLANポートアドレスを <code class="docutils literal notranslate"><span class="pre">100.65.21.1</span></code> として記載します。</div>
+<div class="line">※1,2　導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</div>
+<div class="line">※3  　ご契約拠点により、WCIアドレスおよびサブネットの割当範囲が異なります。別途ご確認下さい。本資料ではWCIアドレス割当範囲を <code class="docutils literal notranslate"><span class="pre">100.65.21.0/26</span></code>、WCIルータのLANポートアドレスを <code class="docutils literal notranslate"><span class="pre">100.65.21.1</span></code> として記載します。</div>
 </div>
-</div>
-</li>
-</ul>
 </div>
 </section>
 <hr class="docutils" />
@@ -140,7 +135,10 @@
 <hr class="docutils" />
 <section id="id3">
 <h3>接続<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<p>他拠点との接続については別紙 <cite>WCI Portal 利用手順書</cite> をご確認ください。</p>
+<div class="line-block">
+<div class="line">他拠点との接続については別紙 <cite>WCI Portal 利用手順書</cite> をご確認ください。</div>
+<div class="line">接続で指定するサブネットは本事項で作成したものを指定してください。</div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="id4">
@@ -165,12 +163,21 @@
 <li><p><strong>[プロトコル]</strong> : <code class="docutils literal notranslate"><span class="pre">TCP</span></code> , <strong>[ポート]</strong> : <code class="docutils literal notranslate"><span class="pre">443</span></code> と設定します。</p></li>
 <li><p><strong>[登録]</strong> ボタンを押下します。</p></li>
 </ul>
-<p>これで、接続している他拠点に対して、Webサーバを公開する設定が完了しました。</p>
+<div class="line-block">
+<div class="line">これで、接続している他拠点に対して、Webサーバを公開する設定が完了しました。</div>
+<div class="line">また、拠点ネットワーク内の端末からWCI Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。</div>
+</div>
 <div class="admonition caution">
 <p class="admonition-title">注意</p>
 <div class="line-block">
 <div class="line">本事例の場合、接続構成図の <strong>端末</strong> を含め拠点ネットワーク内の全てのデバイスに対する <code class="docutils literal notranslate"><span class="pre">443/tcp</span></code> も許可する設定となります。</div>
 <div class="line">よりセキュアで柔軟な設定を行う場合は　&quot; <a class="reference internal" href="webserver.html"><span class="doc">Webサーバを公開する(NAT,NAPT)</span></a> &quot;の構成を推奨いたします。</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="line-block">
+<div class="line">本事例では <code class="docutils literal notranslate"><span class="pre">443/tcp</span></code> を許可する設定ですが許可するプロトコル・ポートを変更することで任意のサービスを公開することが可能です。</div>
 </div>
 </div>
 </section>
@@ -181,7 +188,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../standard.html" class="btn btn-neutral float-left" title="基本設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="基本設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="webserver.html" class="btn btn-neutral float-right" title="Webサーバを公開する(NAT,NAPT)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -27,6 +27,6 @@ WCI 設定事例集
    :maxdepth: 3
    :caption: Contents:
    
-   preface
-   standard
-   ipv6
+   preface/index
+   standard/index
+   ipv6/index
