@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webサーバを公開する(NAT,NAPT) &mdash; WCI設定事例集  ドキュメント</title>
+  <title>2.2. Webサーバを公開する(NAT,NAPT) &mdash; WCI設定事例集  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=d4bf43ca" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="SPGと連携する" href="spg.html" />
-    <link rel="prev" title="Webサーバを公開する" href="simple_webserver.html" /> 
+    <link rel="next" title="2.3. SPGと連携する" href="spg.html" />
+    <link rel="prev" title="2.1. Webサーバを公開する" href="simple_webserver.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,19 +46,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preface/index.html">はじめに</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">基本設定</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="simple_webserver.html">Webサーバを公開する</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Webサーバを公開する(NAT,NAPT)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">接続構成とネットワーク</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">セキュリティアプライアンスについて</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#wci">WCIポータルの設定</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../preface/index.html">1. はじめに</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 基本設定</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simple_webserver.html">2.1. Webサーバを公開する</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Webサーバを公開する(NAT,NAPT)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. 接続構成とネットワーク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. セキュリティアプライアンスについて</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wci">3. WCIポータルの設定</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">サブネットの登録</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">接続</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">フィルタ管理</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">セキュリティアプライアンスの設定例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4. セキュリティアプライアンスの設定例</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id7">アドレス設定</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">スタティックルート設定</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dns">DNS設定</a></li>
@@ -73,10 +73,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="spg.html">SPGと連携する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spg.html">2.3. SPGと連携する</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ipv6/index.html">IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipv6/index.html">3. IPv6</a></li>
 </ul>
 
         </div>
@@ -93,8 +93,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">基本設定</a></li>
-      <li class="breadcrumb-item active">Webサーバを公開する(NAT,NAPT)</li>
+          <li class="breadcrumb-item"><a href="index.html">2. 基本設定</a></li>
+      <li class="breadcrumb-item active">2.2. Webサーバを公開する(NAT,NAPT)</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -104,17 +104,17 @@
            <div itemprop="articleBody">
              
   <section id="web-nat-napt">
-<h1>Webサーバを公開する(NAT,NAPT)<a class="headerlink" href="#web-nat-napt" title="Link to this heading"></a></h1>
+<h1>2.2. Webサーバを公開する(NAT,NAPT)<a class="headerlink" href="#web-nat-napt" title="Link to this heading"></a></h1>
 <p>WCIルータとファイアウォール/ルータ等のセキュリティアプライアンスを接続し、NATおよびNAPTを利用してWCIアドレスを拠点内のWebサーバ（443/tcp）に変換することで、拠点内のサーバをWCIネットワーク（IPv4）上に公開します。同時に、外部公開を行わない閲覧用の拠点ネットワークを作成します。</p>
 <section id="id1">
-<h2>接続構成とネットワーク<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>1. 接続構成とネットワーク<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p><strong>接続構成図</strong></p>
 <a class="reference internal image-reference" href="../_images/webserver.png"><img alt="../_images/webserver.png" src="../_images/webserver.png" style="width: 1184.1px; height: 308.4px;" />
 </a>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
 <div class="line-block">
-<div class="line">※1,2　導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</div>
+<div class="line">※1,2　導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">1.2. WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</div>
 <div class="line">※3  　ご契約拠点により、WCIアドレスおよびサブネットの割当範囲が異なります。別途ご確認下さい。本資料ではWCIアドレス割当範囲を <code class="docutils literal notranslate"><span class="pre">100.65.21.0/26</span></code>、WCIルータのLANポートアドレスを <code class="docutils literal notranslate"><span class="pre">100.65.21.1</span></code> として記載します。</div>
 </div>
 </div>
@@ -134,7 +134,7 @@
 </section>
 <hr class="docutils" />
 <section id="id2">
-<h2>セキュリティアプライアンスについて<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2>2. セキュリティアプライアンスについて<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <div class="line-block">
 <div class="line">基本的なNAT,NAPT機能を有する多くの機種で問題なくご利用いただける見込みです。</div>
 <div class="line"><br /></div>
@@ -143,7 +143,7 @@
 </section>
 <hr class="docutils" />
 <section id="wci">
-<h2>WCIポータルの設定<a class="headerlink" href="#wci" title="Link to this heading"></a></h2>
+<h2>3. WCIポータルの設定<a class="headerlink" href="#wci" title="Link to this heading"></a></h2>
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://portal.bbwci.net">WCI Portal</a> (<cite>https://portal.bbwci.net</cite>)にアクセスしログインします。</div>
 <div class="line">必要に応じて、WCIルータのLANポートに設定用端末を接続してアクセスして下さい。</div>
@@ -172,7 +172,7 @@
 <section id="id4">
 <h3>接続<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <div class="line-block">
-<div class="line">他拠点との接続については別紙 <cite>WCI Portal 利用手順書</cite> をご確認ください。</div>
+<div class="line">他拠点との接続については別紙 <cite>WCI-Portal 利用手順書</cite> をご確認ください。</div>
 <div class="line">接続で指定するサブネットは本事項で作成したものを指定してください。</div>
 </div>
 </section>
@@ -203,7 +203,7 @@
 </section>
 <hr class="docutils" />
 <section id="id6">
-<h2>セキュリティアプライアンスの設定例<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<h2>4. セキュリティアプライアンスの設定例<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <div class="line-block">
 <div class="line">NAT（ネットワークアドレス変換）とNAPT（ネットワークアドレスポート変換）機能を使用して、</div>
 <div class="line">WCIアドレス(IPv4)を拠点ネットワーク内の端末のアドレスへ変換する事で通信を実現します。</div>
@@ -224,6 +224,15 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>IP/ネットマスク</strong></p>
 </div></blockquote>
 </td>
@@ -241,18 +250,27 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>宛先(サブネット)</strong></p>
 </div></blockquote>
 </td>
 <td><p>100.64.0.0 255.192.0.0</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>ゲートウェイアドレス</strong></p>
 </div></blockquote>
 </td>
 <td><p>100.65.21.1</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>インタフェース</strong></p>
 </div></blockquote>
 </td>
@@ -270,18 +288,27 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>DNSサーバ</strong></p>
 </div></blockquote>
 </td>
 <td><p>指定</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>プライマリDNSサーバ</strong></p>
 </div></blockquote>
 </td>
 <td><p>100.65.21.1</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>DNSプロトコル</strong></p>
 </div></blockquote>
 </td>
@@ -302,12 +329,21 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>アドレッシングモード</strong></p>
 </div></blockquote>
 </td>
 <td><p>マニュアル</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>IP/ネットマスク</strong></p>
 </div></blockquote>
 </td>
@@ -328,12 +364,21 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>アドレッシングモード</strong></p>
 </div></blockquote>
 </td>
 <td><p>マニュアル</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>IP/ネットマスク</strong></p>
 </div></blockquote>
 </td>
@@ -353,24 +398,33 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>インターフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>wan1</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>タイプ</strong></p>
 </div></blockquote>
 </td>
 <td><p>スタティックNAT</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>外部IPアドレス/範囲</strong></p>
 </div></blockquote>
 </td>
 <td><p>100.65.21.3</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>IPv4アドレス/範囲</strong></p>
 </div></blockquote>
 </td>
@@ -384,24 +438,33 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>プロトコル</strong></p>
 </div></blockquote>
 </td>
 <td><p>TCP</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>ポートマッピングタイプ</strong></p>
 </div></blockquote>
 </td>
 <td><p>1対1</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>外部サービスポート</strong></p>
 </div></blockquote>
 </td>
 <td><p>443</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>IPv4ポートへマップ</strong></p>
 </div></blockquote>
 </td>
@@ -418,12 +481,21 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>タイプ</strong></p>
 </div></blockquote>
 </td>
 <td><p>オーバーロード</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>外部IP範囲</strong></p>
 </div></blockquote>
 </td>
@@ -442,30 +514,39 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>着信インターフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>wan1</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>発信インターフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>internal1</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>送信元</strong></p>
 </div></blockquote>
 </td>
 <td><p>WCI(アドレス設定で作成したもの)</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>宛先</strong></p>
 </div></blockquote>
 </td>
 <td><p>VIP_WebServer(NAT設定-バーチャルIPで作成した物)</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>サービス</strong></p>
 </div></blockquote>
 </td>
@@ -488,7 +569,7 @@
 </tbody>
 </table>
 <ul class="simple">
-<li><p>セキュリティプロファイルを設定します(省略)</p></li>
+<li><p>適切なセキュリティプロファイルを設定します</p></li>
 </ul>
 <hr class="docutils" />
 <div class="line-block">
@@ -514,12 +595,21 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>アドレッシングモード</strong></p>
 </div></blockquote>
 </td>
 <td><p>マニュアル</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>IP/ネットマスク</strong></p>
 </div></blockquote>
 </td>
@@ -541,12 +631,21 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>インターフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>internal2</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>モード</strong></p>
 </div></blockquote>
 </td>
@@ -566,30 +665,39 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>着信インターフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>internal2</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>発信インターフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>wan1</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>送信元</strong></p>
 </div></blockquote>
 </td>
 <td><p>all</p></td>
 </tr>
-<tr class="row-even"><td><blockquote>
+<tr class="row-odd"><td><blockquote>
 <div><p><strong>宛先</strong></p>
 </div></blockquote>
 </td>
 <td><p>WCI(アドレス設定で作成したもの)</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>サービス</strong></p>
 </div></blockquote>
 </td>
@@ -604,6 +712,15 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
 <div><p><strong>IPプール設定</strong></p>
 </div></blockquote>
 </td>
@@ -612,7 +729,7 @@
 </tbody>
 </table>
 <ul class="simple">
-<li><p>セキュリティプロファイルを設定します(省略)</p></li>
+<li><p>適切なセキュリティプロファイルを設定します。</p></li>
 </ul>
 <hr class="docutils" />
 <p>これで、拠点ネットワークBからWCI Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。端末からの通信はNAPTにて、ファイアウォールのアドレス <code class="docutils literal notranslate"><span class="pre">100.65.21.2</span></code> に変換されます。</p>
@@ -624,8 +741,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="simple_webserver.html" class="btn btn-neutral float-left" title="Webサーバを公開する" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="spg.html" class="btn btn-neutral float-right" title="SPGと連携する" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="simple_webserver.html" class="btn btn-neutral float-left" title="2.1. Webサーバを公開する" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="spg.html" class="btn btn-neutral float-right" title="2.3. SPGと連携する" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
