@@ -157,7 +157,7 @@
 <div class="line">　各内部インタフェースで <cite>::/64</cite> に分割されたサブネットをRAにより広告し、ホストに対してIPv6アドレスとDNS情報を配布します。</div>
 </div>
 <div class="line-block">
-<div class="line">本事例では、Fortinet社のFortiGate(FortiOS7.4以降)を一例として設定方法を紹介します。</div>
+<div class="line">本事例では、Fortinet社のFortiGate(FortiOS 7.2, 7.4)を一例として設定方法を紹介します。</div>
 </div>
 </section>
 <section id="wci">
@@ -253,7 +253,7 @@
 </div>
 </div>
 <p><strong>[アドレス]</strong> → <strong>[IPv6 Address]</strong> → <strong>[新規作成]</strong> からアドレスを以下の様に編集します。</p>
-<a class="reference internal image-reference" href="../_images/a1.png"><img alt="../_images/a1.png" src="../_images/a1.png" style="width: 433.29999999999995px; height: 186.89999999999998px;" />
+<a class="reference internal image-reference" href="../_images/a1.png"><img alt="../_images/a1.png" src="../_images/a1.png" style="width: 510.0px; height: 219.29999999999998px;" />
 </a>
 <hr class="docutils" />
 <a class="reference internal image-reference" href="../_images/a2.png"><img alt="../_images/a2.png" src="../_images/a2.png" style="width: 479.49999999999994px; height: 231.7px;" />
@@ -307,14 +307,14 @@
 <div><p><strong>IPv6アドレス</strong></p>
 </div></blockquote>
 </td>
-<td><p>fdad:6bb6:54bc:201:X:X:X:X/64</p></td>
+<td><p>fdad:6bb6:54bc:201::/64</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition attention">
-<p class="admonition-title">注意</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <ul class="simple">
-<li><p>X:X:X:Xの部分は <strong>Webサーバ</strong> のEUI-64で自動生成されたIPv6を設定します。固定アドレスを設定する事も可能です。</p></li>
+<li><p>今回はNetworkAのサブネット単位で設定しますが、 <strong>Webサーバ</strong> の固定アドレスのみを設定することも可能です。</p></li>
 </ul>
 </div>
 <p>設定した <strong>アドレス群</strong> は後述のポリシー設定の際に使用します。</p>
@@ -413,6 +413,7 @@
 <span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-send-adv<span class="w"> </span><span class="nb">enable</span>
 <span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-delegated-prefix-iaid<span class="w"> </span><span class="m">1</span>
 <span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-upstream-interface<span class="w"> </span><span class="s2">&quot;wan1&quot;</span>
+<span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-subnet<span class="w"> </span><span class="m">0</span>:0:0:1::/64
 <span class="w">            </span>config<span class="w"> </span>ip6-delegated-prefix-list
 <span class="w">                </span>edit<span class="w"> </span><span class="m">1</span>
 <span class="w">                    </span><span class="nb">set</span><span class="w"> </span>upstream-interface<span class="w"> </span><span class="s2">&quot;wan1&quot;</span>
@@ -548,6 +549,7 @@ end
 <span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-send-adv<span class="w"> </span><span class="nb">enable</span>
 <span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-delegated-prefix-iaid<span class="w"> </span><span class="m">1</span>
 <span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-upstream-interface<span class="w"> </span><span class="s2">&quot;wan1&quot;</span>
+<span class="w">            </span><span class="nb">set</span><span class="w"> </span>ip6-subnet<span class="w"> </span><span class="m">0</span>:0:0:2::/64
 <span class="w">            </span>config<span class="w"> </span>ip6-delegated-prefix-list
 <span class="w">                </span>edit<span class="w"> </span><span class="m">1</span>
 <span class="w">                    </span><span class="nb">set</span><span class="w"> </span>upstream-interface<span class="w"> </span><span class="s2">&quot;wan1&quot;</span>
@@ -617,11 +619,15 @@ end
 </tbody>
 </table>
 <ul class="simple">
-<li><p>※ <strong>送信元</strong> , <strong>宛先</strong>, <strong>サービス</strong> は利用用途に応じて適切に設定してください。</p></li>
+<li><p><strong>送信元</strong> , <strong>宛先</strong>, <strong>サービス</strong> は利用用途に応じて適切に設定してください。 <strong>宛先</strong> については <cite>all</cite> を推奨しています。※1</p></li>
 <li><p>セキュリティプロファイルを設定します(省略)</p></li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>※1　WCIポータルを始めとするWCIサービスのアドレス範囲に限って宛先に指定したい場合は、別途WCIサービスのipv6アドレス範囲をお伝えしますのでお問い合わせください。</p>
+</div>
 <hr class="docutils" />
-<p>これで、拠点ネットワークBからWCI Portalや他接続拠点で公開されているサービス(IPv6)へのアクセスが可能となります。</p>
+<p>これで、拠点ネットワークBからWCI Portalや他接続拠点で公開されているIPv6サービスへのアクセスが可能となります。</p>
 </section>
 </section>
 </section>
