@@ -102,28 +102,39 @@
              
   <section id="spg">
 <h1>2.3. SPGと連携する<a class="headerlink" href="#spg" title="Link to this heading"></a></h1>
-<p>WCIルータとファイアウォール/ルータ等のセキュリティアプライアンスを接続する構成のおいて、SPGを組み合わせて使用する際の構成事例を紹介します。SPG用ネットワークとWCIで利用する拠点ネットワークを分けて構成します。</p>
+<div class="line-block">
+<div class="line">WCIルータとファイアウォール/ルータ等のセキュリティアプライアンスを接続する構成において、弊社のリモートデスクトップサービスである</div>
+<div class="line"><strong>SPG-Remote Medical</strong> (以下SPG)を併用し、WCIネットワーク上でのリモートアクセス環境を実現します。</div>
+<div class="line">本事例では、SPG用ネットワークとWCIで利用する拠点ネットワークを分けて構成します。</div>
+<div class="line">SPGの詳細な内容については <a class="reference external" href="https://bit-brain.jp/service/spg_medical">弊社のホームページ SPG-Remote Medical</a> をご確認ください。</div>
+</div>
 <hr class="docutils" />
 <section id="id1">
 <h2>1. 接続構成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p><strong>接続構成図</strong></p>
-<a class="reference internal image-reference" href="../_images/spg.png"><img alt="../_images/spg.png" src="../_images/spg.png" style="width: 1034.75px; height: 331.25px;" />
+<a class="reference internal image-reference" href="../_images/spg.png"><img alt="../_images/spg.png" src="../_images/spg.png" style="width: 1083.75px; height: 322.75px;" />
 </a>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
 <ul class="simple">
-<li><p>※1,2 導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">1.2. WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</p></li>
+<li><p>※1,2 導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">1.1. WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</p></li>
 <li><p>※3,4 導入機種により接続ポートが異なります。SPGのご契約内容をご確認ください。</p></li>
 <li><p>※5 SPGを使用する場合、ご利用できないWCIアドレスが存在します。詳細については後述します。</p></li>
 </ul>
 </div>
 <hr class="docutils" />
 <ul class="simple">
+<li><p><strong>SPG Isolate Center</strong></p></li>
+</ul>
+<div class="line-block">
+<div class="line">　　ビットブレインが管理運用するWCIネットワーク上のセキュリティクラウドです。</div>
+</div>
+<ul class="simple">
 <li><p><strong>SPGネットワーク</strong></p></li>
 </ul>
 <div class="line-block">
-<div class="line">　　このネットワーク内の端末は外部のSPG接続の接続先となります。基本的には端末の設定のみでご利用いただけます。</div>
-<div class="line">　　端末の設定方法/SPGルータの接続設定・変更については、SPGのご契約内容や利用手順書をご確認ください。</div>
+<div class="line">　　SPGルータにより、SPG Isolate Centerからこのネットワーク内の端末へのSPG接続のみを自動で許可します。</div>
+<div class="line">　　ネットワークのアドレス範囲についてはSPGご契約時に指定いただいたサブネットを使用できます。本事例では、 <code class="docutils literal notranslate"><span class="pre">192.168.1.0/24</span></code> としています。</div>
 </div>
 <ul class="simple">
 <li><p><strong>拠点ネットワーク</strong></p></li>
@@ -132,8 +143,15 @@
 <div class="line">　　本事例ではサービスの外部公開は行わず、WCI Portalや他拠点サービスへのアクセス用途に限定します。</div>
 <div class="line">　　外部に対してサービスを提供する場合は&quot; <a class="reference internal" href="webserver.html"><span class="doc">2.2. Webサーバを公開する(NAT,NAPT)</span></a> &quot;を併せてご確認ください。</div>
 </div>
-</section>
 <hr class="docutils" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="line-block">
+<div class="line">SPGの利用にあたっては基本的に端末側の設定のみでご利用いただけます。端末の設定方法/SPGルータの接続設定・変更については、</div>
+<div class="line">SPGのご契約内容や利用手順書をご確認ください。</div>
+</div>
+</div>
+</section>
 <section id="id2">
 <h2>2. セキュリティアプライアンスについて<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <div class="line-block">
@@ -159,7 +177,7 @@
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
 <div class="line-block">
-<div class="line">SPGサービスをご契約の拠点の場合、システム予約によりSPG専用のサブネットが割り当てられています。</div>
+<div class="line">SPGをご契約の拠点の場合、システム予約によりSPG専用のサブネットが割り当ている場合が有ります。</div>
 <div class="line">このサブネット範囲のアドレスをファイアウォール/ルータでハンドリングするとアドレスバッティングを引き起こす可能性が有りますのでご注意ください。</div>
 </div>
 </div>
@@ -170,8 +188,8 @@
 <a class="reference internal image-reference" href="../_images/20.png"><img alt="../_images/20.png" src="../_images/20.png" style="width: 429.59999999999997px; height: 485.4px;" />
 </a>
 <ul>
-<li><p><strong>[サブネット名]</strong> に名称を設定します。 <code class="docutils literal notranslate"><span class="pre">sample_subnet</span></code></p></li>
-<li><p><strong>[プレフィックス]</strong> を指定します。プレフィックスは任意のサイズを割り当てることが可能ですが本事例では <code class="docutils literal notranslate"><span class="pre">/29</span></code> を設定します。</p></li>
+<li><p><strong>[サブネット名]</strong> に名称を設定します。任意の名称を設定できますが本事例では <code class="docutils literal notranslate"><span class="pre">sample_subnet</span></code> とします。</p></li>
+<li><p><strong>[プレフィックス]</strong> を指定します。本事例では <code class="docutils literal notranslate"><span class="pre">29</span></code> を設定します。</p></li>
 <li><div class="line-block">
 <div class="line"><strong>[ネットワークアドレス]</strong> を指定します。今回は <code class="docutils literal notranslate"><span class="pre">100.65.21.8</span></code> を設定します。</div>
 <div class="line">※SPGネットワークとの兼ね合いで指定できないネットワークが存在します。</div>
@@ -189,8 +207,8 @@
 <section id="id4">
 <h3>接続<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <div class="line-block">
-<div class="line">SPGネットワークに対する接続はSPGサービスに限定して自動的に生成されます。そのため他拠点との接続は不要です。</div>
-<div class="line">拠点ネットワーク内の端末を外部に対してサービスを提供する場合の他拠点との接続については別紙 <cite>WCI Portal 利用手順書</cite> をご確認ください。</div>
+<div class="line">SPG Isolate Centerとの接続はシステムにより自動的に生成されます。</div>
+<div class="line">その他拠点との接続については別紙 <cite>WCI Portal 利用手順書</cite> をご確認ください。</div>
 </div>
 </section>
 <hr class="docutils" />
@@ -198,7 +216,7 @@
 <h3>フィルタ管理<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <div class="line-block">
 <div class="line">本事例では設定不要です。</div>
-<div class="line">SPGネットワークの各端末に対するRDPサービスのみがシステムにより自動的に許可されます。</div>
+<div class="line">SPG Isolate CenterからSPGネットワーク内の端末へのSPG接続はシステムにより自動で許可されます。</div>
 <div class="line"><br /></div>
 <div class="line">拠点ネットワークで、サービスを公開する場合は&quot; <a class="reference internal" href="webserver.html"><span class="doc">2.2. Webサーバを公開する(NAT,NAPT)</span></a> &quot;をご確認ください。</div>
 </div>
@@ -503,7 +521,7 @@
 <li><p>適切なセキュリティプロファイルを設定します</p></li>
 </ul>
 <hr class="docutils" />
-<p>これで、拠点ネットワークBからWCI Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。端末からの通信はNAPTにて、ファイアウォールのアドレス <code class="docutils literal notranslate"><span class="pre">100.65.21.10</span></code> に変換されます。</p>
+<p>これで、拠点ネットワークからWCI Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。端末からの通信はNAPTにて、ファイアウォールのアドレス <code class="docutils literal notranslate"><span class="pre">100.65.21.10</span></code> に変換されます。</p>
 </section>
 </section>
 </section>

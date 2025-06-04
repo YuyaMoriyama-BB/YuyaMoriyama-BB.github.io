@@ -109,12 +109,12 @@
 <section id="id1">
 <h2>1. 接続構成とネットワーク<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p><strong>接続構成図</strong></p>
-<a class="reference internal image-reference" href="../_images/webserver.png"><img alt="../_images/webserver.png" src="../_images/webserver.png" style="width: 1184.1px; height: 308.4px;" />
+<a class="reference internal image-reference" href="../_images/webserver.png"><img alt="../_images/webserver.png" src="../_images/webserver.png" style="width: 1233.0px; height: 322.2px;" />
 </a>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
 <div class="line-block">
-<div class="line">※1,2　導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">1.2. WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</div>
+<div class="line">※1,2　導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">1.1. WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</div>
 <div class="line">※3  　ご契約拠点により、WCIアドレスおよびサブネットの割当範囲が異なります。別途ご確認下さい。本資料ではWCIアドレス割当範囲を <code class="docutils literal notranslate"><span class="pre">100.65.21.0/26</span></code>、WCIルータのLANポートアドレスを <code class="docutils literal notranslate"><span class="pre">100.65.21.1</span></code> として記載します。</div>
 </div>
 </div>
@@ -137,8 +137,14 @@
 <h2>2. セキュリティアプライアンスについて<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <div class="line-block">
 <div class="line">基本的なNAT,NAPT機能を有する多くの機種で問題なくご利用いただける見込みです。</div>
-<div class="line"><br /></div>
 <div class="line">本事例では、Fortinet社のFortiGate(FortiOS 7.2, 7.4)を一例として設定方法を紹介します。</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<div class="line-block">
+<div class="line">FortiGate および FortiOS GUI は Fortinet, Inc. の商標・著作物です。</div>
+<div class="line">© Fortinet, Inc. All rights reserved.</div>
+</div>
 </div>
 </section>
 <hr class="docutils" />
@@ -157,8 +163,8 @@
 <a class="reference internal image-reference" href="../_images/21.png"><img alt="../_images/21.png" src="../_images/21.png" style="width: 467.4px; height: 598.1999999999999px;" />
 </a>
 <ul class="simple">
-<li><p><strong>[サブネット名]</strong> に名称を設定します。 <code class="docutils literal notranslate"><span class="pre">sample_single_subnet</span></code></p></li>
-<li><p><strong>[プレフィックス]</strong> を指定します。プレフィックスは任意のサイズを割り当てることが可能ですが本事例では <code class="docutils literal notranslate"><span class="pre">/26</span></code> を設定します。</p></li>
+<li><p><strong>[サブネット名]</strong> に名称を設定します。任意の名称を設定できますが本事例では <code class="docutils literal notranslate"><span class="pre">sample_single_subnet</span></code> とします。</p></li>
+<li><p><strong>[プレフィックス]</strong> を指定します。本事例では <code class="docutils literal notranslate"><span class="pre">26</span></code> を設定します。</p></li>
 <li><p><strong>[ネットワークアドレス]</strong> を指定します。<code class="docutils literal notranslate"><span class="pre">100.65.21.0</span></code> を設定します。</p></li>
 <li><p><strong>[登録]</strong> ボタンを押下します。</p></li>
 </ul>
@@ -173,7 +179,7 @@
 <h3>接続<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <div class="line-block">
 <div class="line">他拠点との接続については別紙 <cite>WCI-Portal 利用手順書</cite> をご確認ください。</div>
-<div class="line">接続で指定するサブネットは本事項で作成したものを指定してください。</div>
+<div class="line">接続で指定するサブネットは <strong>サブネットの登録</strong> で作成した　<code class="docutils literal notranslate"><span class="pre">sample_single_subnet</span></code> を指定してください。</div>
 </div>
 </section>
 <hr class="docutils" />
@@ -208,7 +214,7 @@
 <div class="line">NAT（ネットワークアドレス変換）とNAPT（ネットワークアドレスポート変換）機能を使用して、</div>
 <div class="line">WCIアドレス(IPv4)を拠点ネットワーク内の端末のアドレスへ変換する事で通信を実現します。</div>
 </div>
-<p><strong>物理インターフェース構成</strong></p>
+<p><strong>物理インタフェース構成</strong></p>
 <a class="reference internal image-reference" href="../_images/fw1.png"><img alt="../_images/fw1.png" src="../_images/fw1.png" style="width: 576.9px; height: 173.7px;" />
 </a>
 <hr class="docutils" />
@@ -321,8 +327,8 @@
 <section id="wan">
 <h3>WAN設定<a class="headerlink" href="#wan" title="Link to this heading"></a></h3>
 <div class="line-block">
-<div class="line"><strong>[インタフェース]</strong> から任意のインターフェースを選択して編集を行います。</div>
-<div class="line">本事例では物理インターフェース <code class="docutils literal notranslate"><span class="pre">wan1</span></code> にWCIルータを接続する構成とするため、 <code class="docutils literal notranslate"><span class="pre">wan1</span></code> を選択します。</div>
+<div class="line"><strong>[インタフェース]</strong> から任意のインタフェースを選択して編集を行います。</div>
+<div class="line">本事例では物理インタフェース <code class="docutils literal notranslate"><span class="pre">wan1</span></code> にWCIルータを接続する構成とするため、 <code class="docutils literal notranslate"><span class="pre">wan1</span></code> を選択します。</div>
 </div>
 <a class="reference internal image-reference" href="../_images/111.png"><img alt="../_images/111.png" src="../_images/111.png" style="width: 614.5999999999999px; height: 316.4px;" />
 </a>
@@ -356,8 +362,8 @@
 <section id="lan-a">
 <h3>LAN設定(拠点ネットワークA)<a class="headerlink" href="#lan-a" title="Link to this heading"></a></h3>
 <div class="line-block">
-<div class="line"><strong>[インタフェース]</strong> から任意のインターフェースを選択して編集を行います。</div>
-<div class="line">本事例では物理インターフェース <code class="docutils literal notranslate"><span class="pre">internal1</span></code> 配下に拠点ネットワークAを構成するため、 <code class="docutils literal notranslate"><span class="pre">internal1</span></code> を選択します。</div>
+<div class="line"><strong>[インタフェース]</strong> から任意のインタフェースを選択して編集を行います。</div>
+<div class="line">本事例では物理インタフェース <code class="docutils literal notranslate"><span class="pre">internal1</span></code> 配下に拠点ネットワークAを構成するため、 <code class="docutils literal notranslate"><span class="pre">internal1</span></code> を選択します。</div>
 </div>
 <a class="reference internal image-reference" href="../_images/121.png"><img alt="../_images/121.png" src="../_images/121.png" style="width: 767.9px; height: 277.9px;" />
 </a>
@@ -407,7 +413,7 @@
 </td>
 </tr>
 <tr class="row-even"><td><blockquote>
-<div><p><strong>インターフェース</strong></p>
+<div><p><strong>インタフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>wan1</p></td>
@@ -523,13 +529,13 @@
 </td>
 </tr>
 <tr class="row-even"><td><blockquote>
-<div><p><strong>着信インターフェース</strong></p>
+<div><p><strong>着信インタフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>wan1</p></td>
 </tr>
 <tr class="row-odd"><td><blockquote>
-<div><p><strong>発信インターフェース</strong></p>
+<div><p><strong>発信インタフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>internal1</p></td>
@@ -587,8 +593,8 @@
 <section id="lan-b">
 <h3>LAN設定(拠点ネットワークB)<a class="headerlink" href="#lan-b" title="Link to this heading"></a></h3>
 <div class="line-block">
-<div class="line"><strong>[インタフェース]</strong> から任意のインターフェースを選択して編集を行います。</div>
-<div class="line">本事例では物理インターフェース <code class="docutils literal notranslate"><span class="pre">internal2</span></code> 配下に拠点ネットワークBを構成するため、 <code class="docutils literal notranslate"><span class="pre">internal2</span></code> を選択します。</div>
+<div class="line"><strong>[インタフェース]</strong> から任意のインタフェースを選択して編集を行います。</div>
+<div class="line">本事例では物理インタフェース <code class="docutils literal notranslate"><span class="pre">internal2</span></code> 配下に拠点ネットワークBを構成するため、 <code class="docutils literal notranslate"><span class="pre">internal2</span></code> を選択します。</div>
 </div>
 <a class="reference internal image-reference" href="../_images/16.png"><img alt="../_images/16.png" src="../_images/16.png" style="width: 646.0999999999999px; height: 284.9px;" />
 </a>
@@ -624,7 +630,7 @@
 <div class="line">拠点ネットワークBに対して、DNSプロキシの設定を行います。</div>
 <div class="line">拠点ネットワークBの端末において <code class="docutils literal notranslate"><span class="pre">internal2</span></code> のアドレスをDNSサーバとして設定する事でDNSの通信をWCIルータに転送できます。</div>
 <div class="line"><br /></div>
-<div class="line"><strong>[DNSサーバ]</strong> → <strong>インターフェース上のDNSサービス</strong> → <strong>[新規作成]</strong> からDNSサービスを以下の様に編集します。</div>
+<div class="line"><strong>[DNSサーバ]</strong> → <strong>インタフェース上のDNSサービス</strong> → <strong>[新規作成]</strong> からDNSサービスを以下の様に編集します。</div>
 </div>
 <a class="reference internal image-reference" href="../_images/17.png"><img alt="../_images/17.png" src="../_images/17.png" style="width: 525.6999999999999px; height: 159.6px;" />
 </a>
@@ -640,7 +646,7 @@
 </td>
 </tr>
 <tr class="row-even"><td><blockquote>
-<div><p><strong>インターフェース</strong></p>
+<div><p><strong>インタフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>internal2</p></td>
@@ -674,13 +680,13 @@
 </td>
 </tr>
 <tr class="row-even"><td><blockquote>
-<div><p><strong>着信インターフェース</strong></p>
+<div><p><strong>着信インタフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>internal2</p></td>
 </tr>
 <tr class="row-odd"><td><blockquote>
-<div><p><strong>発信インターフェース</strong></p>
+<div><p><strong>発信インタフェース</strong></p>
 </div></blockquote>
 </td>
 <td><p>wan1</p></td>
