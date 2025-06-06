@@ -49,11 +49,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../preface/index.html">1. はじめに</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 基本設定</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Webサーバを公開する</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1. 接続構成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#wci">1.WCIポータルの設定</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">サブネットの登録</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">接続</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">フィルタ管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.1.1. 接続構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wci-portal">2.1.2. WCI-Portalの設定</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">サブネット管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">接続</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">フィルタ管理</a></li>
 </ul>
 </li>
 </ul>
@@ -96,7 +96,7 @@
 <div class="line">拠点ネットワーク内に、Webサーバ(443/tcp)を設置しWCIネットワーク(IPv4)に公開します。</div>
 </div>
 <section id="id1">
-<h2>1. 接続構成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>2.1.1. 接続構成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p><strong>接続構成図</strong></p>
 <a class="reference internal image-reference" href="../_images/simple_webserver.png"><img alt="../_images/simple_webserver.png" src="../_images/simple_webserver.png" style="width: 1106.7px; height: 262.8px;" />
 </a>
@@ -109,63 +109,100 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="wci">
-<h2>1.WCIポータルの設定<a class="headerlink" href="#wci" title="Link to this heading"></a></h2>
-<p><strong>端末</strong> から <a class="reference external" href="https://portal.bbwci.net">WCI Portal</a> (<cite>https://portal.bbwci.net</cite>)にアクセスしログインします。</p>
-<section id="id2">
-<h3>サブネットの登録<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<a class="reference internal image-reference" href="../_images/14.png"><img alt="../_images/14.png" src="../_images/14.png" style="width: 685.3px; height: 365.4px;" />
+<section id="wci-portal">
+<h2>2.1.2. WCI-Portalの設定<a class="headerlink" href="#wci-portal" title="Link to this heading"></a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="line-block">
+<div class="line">WCI-Portalの詳細な操作方法については別紙 WCI-Portal 利用手順書 をご確認ください。</div>
+</div>
+</div>
+<p><strong>端末</strong> から <a class="reference external" href="https://portal.bbwci.net">WCI-Portal</a> (<cite>https://portal.bbwci.net</cite>)にアクセスしログインします。</p>
+<section id="id3">
+<h3>サブネット管理<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>以下の様に設定します。</p>
+<a class="reference internal image-reference" href="../_images/n11.png"><img alt="../_images/n11.png" src="../_images/n11.png" style="width: 943.0px; height: 448.0px;" />
 </a>
-<p><strong>[サブネット管理]</strong> より、IPv4アドレス欄の <strong>[登録]</strong> ボタンを押下します。</p>
-<hr class="docutils" />
-<a class="reference internal image-reference" href="../_images/21.png"><img alt="../_images/21.png" src="../_images/21.png" style="width: 467.4px; height: 598.1999999999999px;" />
-</a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p><strong>サブネット名</strong></p>
+</div></blockquote>
+</td>
+<td><p>sample_single_subnet</p></td>
+</tr>
+<tr class="row-odd"><td><blockquote>
+<div><p><strong>プレフィックス</strong></p>
+</div></blockquote>
+</td>
+<td><p>26</p></td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p><strong>ネットワークアドレス</strong></p>
+</div></blockquote>
+</td>
+<td><p>100.65.21.0</p></td>
+</tr>
+</tbody>
+</table>
 <ul class="simple">
-<li><p><strong>[サブネット名]</strong> に名称を設定します。任意の名称を設定できますが本事例では <code class="docutils literal notranslate"><span class="pre">sample_single_subnet</span></code> とします。</p></li>
-<li><p><strong>[プレフィックス]</strong> を指定します。本事例では <code class="docutils literal notranslate"><span class="pre">26</span></code> を設定します。</p></li>
-<li><p><strong>[ネットワークアドレス]</strong> を指定します。<code class="docutils literal notranslate"><span class="pre">100.65.21.0</span></code> を設定します。</p></li>
-<li><p><strong>[登録]</strong> ボタンを押下します。</p></li>
+<li><p><strong>サブネット名</strong> は任意の名称を設定できます。</p></li>
 </ul>
-<hr class="docutils" />
-<a class="reference internal image-reference" href="../_images/31.png"><img alt="../_images/31.png" src="../_images/31.png" style="width: 727.3px; height: 256.2px;" />
-</a>
-<p>画面に先ほど設定したサブネットが登録されている事を確認します。
-このサブネットが拠点ネットワークのアドレス帯となります。</p>
+<p>このサブネットが拠点ネットワークのアドレス帯となります。</p>
 </section>
 <hr class="docutils" />
-<section id="id3">
-<h3>接続<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>接続<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>以下の様に設定します。</p>
+<a class="reference internal image-reference" href="../_images/n21.png"><img alt="../_images/n21.png" src="../_images/n21.png" style="width: 888.0px; height: 458.0px;" />
+</a>
 <div class="line-block">
-<div class="line">他拠点との接続については別紙 <cite>WCI-Portal 利用手順書</cite> をご確認ください。</div>
 <div class="line">接続で指定するサブネットは <strong>サブネットの登録</strong> で作成した　<code class="docutils literal notranslate"><span class="pre">sample_single_subnet</span></code> を指定してください。</div>
 </div>
 </section>
 <hr class="docutils" />
-<section id="id4">
-<h3>フィルタ管理<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<a class="reference internal image-reference" href="../_images/41.png"><img alt="../_images/41.png" src="../_images/41.png" style="width: 614.4px; height: 498.0px;" />
+<section id="id5">
+<h3>フィルタ管理<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>以下の様に設定します。</p>
+<a class="reference internal image-reference" href="../_images/n31.png"><img alt="../_images/n31.png" src="../_images/n31.png" style="width: 896.4px; height: 709.65px;" />
 </a>
-<p>画面の <strong>[新規]</strong> ボタンを押下します。</p>
-<hr class="docutils" />
-<a class="reference internal image-reference" href="../_images/51.png"><img alt="../_images/51.png" src="../_images/51.png" style="width: 822.6px; height: 353.4px;" />
-</a>
-<p>フィルタ登録画面にて、<strong>[サブネットID]</strong> を押下します。</p>
-<a class="reference internal image-reference" href="../_images/61.png"><img alt="../_images/61.png" src="../_images/61.png" style="width: 669.0px; height: 465.0px;" />
-</a>
-<p>サブネット選択画面にて先ほど登録した <strong>サブネット</strong>  <code class="docutils literal notranslate"><span class="pre">100.65.21.0/26</span></code> の行の <strong>[選択]</strong> を押下します。</p>
-<hr class="docutils" />
-<a class="reference internal image-reference" href="../_images/71.png"><img alt="../_images/71.png" src="../_images/71.png" style="width: 680.4px; height: 566.4px;" />
-</a>
-<p>フィルタ登録画面にて、サブネットが選択されたことを確認します。</p>
-<hr class="docutils" />
-<ul class="simple">
-<li><p>続いて、フィルタリング (インバウンド)にて <strong>[追加]</strong> ボタンを押下します。</p></li>
-<li><p><strong>[プロトコル]</strong> : <code class="docutils literal notranslate"><span class="pre">TCP</span></code> , <strong>[ポート]</strong> : <code class="docutils literal notranslate"><span class="pre">443</span></code> と設定します。</p></li>
-<li><p><strong>[登録]</strong> ボタンを押下します。</p></li>
-</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p><strong>プロトコル</strong></p>
+</div></blockquote>
+</td>
+<td><p>TCP</p></td>
+</tr>
+<tr class="row-odd"><td><blockquote>
+<div><p><strong>ポート</strong></p>
+</div></blockquote>
+</td>
+<td><p>443</p></td>
+</tr>
+</tbody>
+</table>
 <div class="line-block">
 <div class="line">これで、接続している他拠点に対して、Webサーバを公開する設定が完了しました。</div>
-<div class="line">また、拠点ネットワーク内の端末からWCI Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。</div>
+<div class="line">また、拠点ネットワーク内の端末からWCI-Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。</div>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">注意</p>

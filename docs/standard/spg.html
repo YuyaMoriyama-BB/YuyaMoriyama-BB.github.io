@@ -51,22 +51,22 @@
 <li class="toctree-l2"><a class="reference internal" href="simple_webserver.html">2.1. Webサーバを公開する</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webserver.html">2.2. Webサーバを公開する(NAT,NAPT)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. SPGと連携する</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1. 接続構成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2. セキュリティアプライアンスについて</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#wci">3. WCIポータルの設定</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">サブネットの登録</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">接続</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">フィルタ管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.3.1. 接続構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.3.2. セキュリティアプライアンスについて</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wci-portal">2.3.3. WCI-Portalの設定</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">サブネットの登録</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">接続</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">フィルタ管理</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">4. セキュリティアプライアンスの設定例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">アドレス設定</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">スタティックルート設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.3.4. セキュリティアプライアンスの設定例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">アドレス設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">スタティックルート設定</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dns">DNS設定</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wan">WAN設定</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lan">LAN設定(拠点ネットワーク)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">DNSサービス設定(拠点ネットワーク)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">ポリシー設定(拠点ネットワーク)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">DNSサービス設定(拠点ネットワーク)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">ポリシー設定(拠点ネットワーク)</a></li>
 </ul>
 </li>
 </ul>
@@ -110,7 +110,7 @@
 </div>
 <hr class="docutils" />
 <section id="id1">
-<h2>1. 接続構成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>2.3.1. 接続構成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p><strong>接続構成図</strong></p>
 <a class="reference internal image-reference" href="../_images/spg.png"><img alt="../_images/spg.png" src="../_images/spg.png" style="width: 1083.75px; height: 322.75px;" />
 </a>
@@ -119,7 +119,8 @@
 <ul class="simple">
 <li><p>※1,2 導入機種により接続ポートが異なります。詳しくは&quot; <a class="reference internal" href="../preface/init.html"><span class="doc">1.1. WCIルータについて</span></a> &quot;の導入機種に応じたポート対応表をご確認下さい。</p></li>
 <li><p>※3,4 導入機種により接続ポートが異なります。SPGのご契約内容をご確認ください。</p></li>
-<li><p>※5 SPGを使用する場合、ご利用できないWCIアドレスが存在します。詳細については後述します。</p></li>
+<li><p>※5 ご契約拠点により、WCIアドレスおよびサブネットの割当範囲が異なります。別途ご確認下さい。本事例ではWCIアドレス割当範囲を <code class="docutils literal notranslate"><span class="pre">100.65.21.0/26</span></code>、WCIルータのLANポートアドレスを <code class="docutils literal notranslate"><span class="pre">100.65.21.1</span></code> として記載します。</p></li>
+<li><p>※6 SPGを使用する場合、ご利用できないWCIアドレスが存在します。詳細については後述します。</p></li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -140,7 +141,7 @@
 <li><p><strong>拠点ネットワーク</strong></p></li>
 </ul>
 <div class="line-block">
-<div class="line">　　本事例ではサービスの外部公開は行わず、WCI Portalや他拠点サービスへのアクセス用途に限定します。</div>
+<div class="line">　　本事例ではサービスの外部公開は行わず、WCI-Portalや他拠点サービスへのアクセス用途に限定します。</div>
 <div class="line">　　外部に対してサービスを提供する場合は&quot; <a class="reference internal" href="webserver.html"><span class="doc">2.2. Webサーバを公開する(NAT,NAPT)</span></a> &quot;を併せてご確認ください。</div>
 </div>
 <hr class="docutils" />
@@ -153,7 +154,7 @@
 </div>
 </section>
 <section id="id2">
-<h2>2. セキュリティアプライアンスについて<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2>2.3.2. セキュリティアプライアンスについて<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <div class="line-block">
 <div class="line">基本的なNAT,NAPT機能を有する多くの機種で問題なくご利用いただける見込みです。</div>
 <div class="line">具体的なメーカ・機種の利用可否については、別途お問い合わせ下さい。</div>
@@ -162,58 +163,80 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="wci">
-<h2>3. WCIポータルの設定<a class="headerlink" href="#wci" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://portal.bbwci.net">WCI Portal</a> (<cite>https://portal.bbwci.net</cite>)にアクセスしログインします。</p>
-<section id="id3">
-<h3>サブネットの登録<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<a class="reference internal image-reference" href="../_images/14.png"><img alt="../_images/14.png" src="../_images/14.png" style="width: 685.3px; height: 365.4px;" />
-</a>
+<section id="wci-portal">
+<h2>2.3.3. WCI-Portalの設定<a class="headerlink" href="#wci-portal" title="Link to this heading"></a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <div class="line-block">
-<div class="line"><strong>[サブネット管理]</strong> より、IPv4アドレス欄を押下して、登録されているサブネットを確認します。</div>
+<div class="line">WCI-Portalの詳細な操作方法については別紙 WCI-Portal 利用手順書 をご確認ください。</div>
 </div>
-<a class="reference internal image-reference" href="../_images/19.png"><img alt="../_images/19.png" src="../_images/19.png" style="width: 907.9px; height: 204.39999999999998px;" />
+</div>
+<div class="line-block">
+<div class="line"><strong>端末</strong> から <a class="reference external" href="https://portal.bbwci.net">WCI-Portal</a> (<cite>https://portal.bbwci.net</cite>)にアクセスしログインします。</div>
+<div class="line">必要に応じて、WCIルータのLANポートに設定用端末を接続してアクセスして下さい。</div>
+</div>
+<section id="id4">
+<h3>サブネットの登録<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/19.png"><img alt="../_images/19.png" src="../_images/19.png" style="width: 648.5px; height: 146.0px;" />
 </a>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
 <div class="line-block">
-<div class="line">SPGをご契約の拠点の場合、システム予約によりSPG専用のサブネットが割り当ている場合が有ります。</div>
+<div class="line">SPGをご契約の拠点の場合、上記画像の通り、システム予約によりSPG専用のサブネットが割り当てられています。</div>
 <div class="line">このサブネット範囲のアドレスをファイアウォール/ルータでハンドリングするとアドレスバッティングを引き起こす可能性が有りますのでご注意ください。</div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="line-block">
-<div class="line">続いて、IPv4アドレス欄の <strong>[登録]</strong> ボタンを押下します。</div>
-</div>
-<a class="reference internal image-reference" href="../_images/20.png"><img alt="../_images/20.png" src="../_images/20.png" style="width: 429.59999999999997px; height: 485.4px;" />
+<p>以下の様に拠点ネットワークのサブネットを設定します。</p>
+<a class="reference internal image-reference" href="../_images/n4.png"><img alt="../_images/n4.png" src="../_images/n4.png" style="width: 1025.6000000000001px; height: 423.6px;" />
 </a>
-<ul>
-<li><p><strong>[サブネット名]</strong> に名称を設定します。任意の名称を設定できますが本事例では <code class="docutils literal notranslate"><span class="pre">sample_subnet</span></code> とします。</p></li>
-<li><p><strong>[プレフィックス]</strong> を指定します。本事例では <code class="docutils literal notranslate"><span class="pre">29</span></code> を設定します。</p></li>
-<li><div class="line-block">
-<div class="line"><strong>[ネットワークアドレス]</strong> を指定します。今回は <code class="docutils literal notranslate"><span class="pre">100.65.21.8</span></code> を設定します。</div>
-<div class="line">※SPGネットワークとの兼ね合いで指定できないネットワークが存在します。</div>
-</div>
-</li>
-<li><p><strong>[登録]</strong> ボタンを押下します。</p></li>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><blockquote>
+<div><p><strong>項目名</strong></p>
+</div></blockquote>
+</td>
+<td><blockquote>
+<div><p><strong>項目内容</strong></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p><strong>サブネット名</strong></p>
+</div></blockquote>
+</td>
+<td><p>sample_subnet</p></td>
+</tr>
+<tr class="row-odd"><td><blockquote>
+<div><p><strong>プレフィックス</strong></p>
+</div></blockquote>
+</td>
+<td><p>29</p></td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p><strong>ネットワークアドレス</strong></p>
+</div></blockquote>
+</td>
+<td><p>100.65.21.8</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>サブネット名</strong> は任意の名称を設定できます。</p></li>
 </ul>
-<hr class="docutils" />
-<a class="reference internal image-reference" href="../_images/211.png"><img alt="../_images/211.png" src="../_images/211.png" style="width: 1012.1999999999999px; height: 277.9px;" />
-</a>
-<p>画面に先ほど設定したサブネットが登録されている事を確認します。
-このサブネットが拠点ネットワークのアドレス帯となります。</p>
+<p>このサブネットが拠点ネットワークのアドレス帯となります。</p>
 </section>
 <hr class="docutils" />
-<section id="id4">
-<h3>接続<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>接続<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <div class="line-block">
 <div class="line">SPG Isolate Centerとの接続はシステムにより自動的に生成されます。</div>
 <div class="line">その他拠点との接続については別紙 <cite>WCI Portal 利用手順書</cite> をご確認ください。</div>
 </div>
 </section>
 <hr class="docutils" />
-<section id="id5">
-<h3>フィルタ管理<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>フィルタ管理<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <div class="line-block">
 <div class="line">本事例では設定不要です。</div>
 <div class="line">SPG Isolate CenterからSPGネットワーク内の端末へのSPG接続はシステムにより自動で許可されます。</div>
@@ -223,14 +246,14 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="id6">
-<h2>4. セキュリティアプライアンスの設定例<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>2.3.4. セキュリティアプライアンスの設定例<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p><strong>物理インターフェース構成</strong></p>
 <a class="reference internal image-reference" href="../_images/fw2.png"><img alt="../_images/fw2.png" src="../_images/fw2.png" style="width: 606.3px; height: 126.6px;" />
 </a>
 <hr class="docutils" />
-<section id="id7">
-<h3>アドレス設定<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>アドレス設定<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>WCIアドレスは以下の様に定義されています。</p>
 <ul class="simple">
 <li><p>100.64.0.0 ～ 100.127.255.255 (100.64.0.0/10)</p></li>
@@ -259,8 +282,8 @@
 </table>
 </section>
 <hr class="docutils" />
-<section id="id8">
-<h3>スタティックルート設定<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>スタティックルート設定<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p><strong>[スタティックルート]</strong> → <strong>[新規作成]</strong> から新規スタティックルートを以下の様に編集します。</p>
 <a class="reference internal image-reference" href="../_images/91.png"><img alt="../_images/91.png" src="../_images/91.png" style="width: 614.5999999999999px; height: 248.49999999999997px;" />
 </a>
@@ -408,8 +431,8 @@
 </tbody>
 </table>
 </section>
-<section id="id9">
-<h3>DNSサービス設定(拠点ネットワーク)<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>DNSサービス設定(拠点ネットワーク)<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <div class="line-block">
 <div class="line">拠点ネットワークBに対して、DNSプロキシの設定を行います。</div>
 <div class="line">拠点ネットワークBの端末において <code class="docutils literal notranslate"><span class="pre">internal1</span></code> のアドレスをDNSサーバとして設定する事でDNSの通信をWCIルータに転送できます。</div>
@@ -444,8 +467,8 @@
 </tbody>
 </table>
 </section>
-<section id="id10">
-<h3>ポリシー設定(拠点ネットワーク)<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id11">
+<h3>ポリシー設定(拠点ネットワーク)<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <div class="line-block">
 <div class="line"><strong>[ファイアウォールポリシー]</strong> → <strong>[新規作成]</strong> から以下の様にポリシーを作成します。</div>
 </div>
@@ -521,7 +544,7 @@
 <li><p>適切なセキュリティプロファイルを設定します</p></li>
 </ul>
 <hr class="docutils" />
-<p>これで、拠点ネットワークからWCI Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。端末からの通信はNAPTにて、ファイアウォールのアドレス <code class="docutils literal notranslate"><span class="pre">100.65.21.10</span></code> に変換されます。</p>
+<p>これで、拠点ネットワークからWCI-Portalや他接続拠点で公開されているサービスへのアクセスが可能となります。端末からの通信はNAPTにて、ファイアウォールのアドレス <code class="docutils literal notranslate"><span class="pre">100.65.21.10</span></code> に変換されます。</p>
 </section>
 </section>
 </section>
